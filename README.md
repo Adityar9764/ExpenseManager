@@ -1,7 +1,7 @@
-# Expe# Expense Tracker 💰📊  
+# Expense Manager 💰📊  
 
 ## Overview  
-This **Expense Tracker** is a full-stack web application designed to help users efficiently manage and monitor their expenses. With dynamic tracking, real-time visual representations, and robust security features, this application ensures a seamless and secure experience for users.  
+This **Expense Manager** is a full-stack web application designed to help users efficiently manage and monitor their expenses. With dynamic tracking, real-time visual representations, and robust security features, this application ensures a seamless and secure experience for users.  
 
 ## Features 🚀  
 ✔️ **Secure Authentication:** Implements **bcrypt** for password hashing and **helmet** for enhanced security.  
@@ -24,8 +24,8 @@ This **Expense Tracker** is a full-stack web application designed to help users 
 ## Installation & Setup ⚙️  
 1️⃣ Clone the repository:  
    ```sh
-   git clone https://github.com/your-repo/expense-tracker.git
-   cd expense-tracker
+   git clone https://github.com/adityar9764/ExpenseManager.git
+   cd ExpenseManager
    ```  
 2️⃣ Install dependencies:  
    ```sh
