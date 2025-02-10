@@ -19,21 +19,35 @@ const port = process.env.PORT;
 connectDB();
 
 const allowedOrigins = [
-  "https://main.d1sj7cd70hlter.amplifyapp.com",
-  "https://expense-tracker-app-three-beryl.vercel.app",
-  // add more origins as needed
+  "http://localhost:3000", 
+  "https://frontend-eqbz2wojb-adityar9764s-projects.vercel.app"
 ];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+  })
+);
 
 // Middleware
 app.use(express.json());
-app.use(
-  cors({
-    origin: 'http://localhost:3000',
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ['Content-Type', 'Authorization']
-  })
-);
+// app.use(
+//   cors({
+//     origin: 'http://localhost:3000',
+//     credentials: true,
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     allowedHeaders: ['Content-Type', 'Authorization']
+//   })
+// );
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("dev"));
@@ -45,9 +59,12 @@ app.use("/api/v1", transactionRoutes);
 app.use("/api/auth", userRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Hello from the server");
 });
 
 app.listen(port, () => {
   console.log(`Server is listening on http://localhost:${port}`);
 });
+
+
+export default app; // Required for Vercel
